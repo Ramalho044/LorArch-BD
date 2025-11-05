@@ -1,0 +1,148 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DBE25BA7-CC89-A70F-926E-60B3A5247F39" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="CH_AUDITORIA">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>CH_AUDITORIA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:34 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_AUDITORIA" id="162504E6-EA88-5473-E6B6-428C5424FC2B">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_AUDITORIA</sourceObjSchema>
+<sourceObjName>ID_AUDITORIA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="TABELA" id="7CF0FB46-AF94-5E66-15FE-3FCB7D10FA06">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_AUDITORIA</sourceObjSchema>
+<sourceObjName>TABELA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="OPERACAO" id="D5D2C385-5C62-F202-97C1-2D56BE2EC561">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_AUDITORIA</sourceObjSchema>
+<sourceObjName>OPERACAO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_REGISTRO" id="17FC5A4A-AD1C-35ED-56AE-F56191A22637">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_AUDITORIA</sourceObjSchema>
+<sourceObjName>ID_REGISTRO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DETALHE" id="191CB9DC-3B8A-82CC-1D26-EB366F21B1C6">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_AUDITORIA</sourceObjSchema>
+<sourceObjName>DETALHE</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATA_AUD" id="3A747951-CE38-C8CA-20BD-8DD19E37B54B">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_AUDITORIA</sourceObjSchema>
+<sourceObjName>DATA_AUD</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>SYSDATE</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USUARIO_BD" id="059095C1-B770-0F34-A199-F0D056C7C91D">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_AUDITORIA</sourceObjSchema>
+<sourceObjName>USUARIO_BD</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128 BYTE</dataTypeSize>
+<defaultValue>USER</defaultValue>
+<ownDataTypeParameters>128 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="635446BB-8089-F4BD-0561-0012A045779C" name="PK_CH_AUD">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>PK_CH_AUD</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:50 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="162504E6-EA88-5473-E6B6-428C5424FC2B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8D888D2A-83FA-21E0-854C-3A6AD5E56C3B" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="PK_CH_AUD">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>PK_CH_AUD</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:36 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="162504E6-EA88-5473-E6B6-428C5424FC2B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,26 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="TRG_AUD_FATO_MOV" directorySegmentName="seg_0" id="6F76E05D-FAB1-2C01-1878-A4A0B5CE4D38">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>TRG_AUD_FATO_MOV</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:03 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<actions>INSERT, UPDATE, DELETE</actions>
+<body><![CDATA[DECLARE
+  v_oper VARCHAR2(10);
+BEGIN
+  IF INSERTING THEN v_oper := 'INSERT';
+  ELSIF UPDATING THEN v_oper := 'UPDATE';
+  ELSIF DELETING THEN v_oper := 'DELETE';
+  END IF;
+
+  INSERT INTO AUDITORIA_MOV (tabela, operacao, id_registro, data_aud, usuario)
+  VALUES ('FATO_MOVIMENTO', v_oper, NVL(:NEW.id_mov,:OLD.id_mov),
+          SYSDATE, SYS_CONTEXT('USERENV','SESSION_USER'));
+END;
+]]></body>
+<triggerTime>AFTER</triggerTime>
+<owner>2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34</owner>
+<table>7791A21C-F439-FD94-DEB6-C417F76A443D</table>
+</TriggerOraclev10g>

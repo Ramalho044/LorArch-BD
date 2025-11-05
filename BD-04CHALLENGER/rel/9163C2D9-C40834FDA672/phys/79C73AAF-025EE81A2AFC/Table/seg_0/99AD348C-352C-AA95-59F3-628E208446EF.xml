@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="AGENCIA" directorySegmentName="seg_0" id="99AD348C-352C-AA95-59F3-628E208446EF">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:34 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>2DF5022B-16BC-1A3B-7990-E44264EB87B6</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID_AGENCIA" id="28DD523C-A768-26E2-5F5D-543C282C0C85">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="NOME_AGENCIA" id="92B94071-E05B-4926-D992-D2E74CAC930D">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="AGENCIA_PK" id="6568881B-F658-8993-4652-04D3599CCED6">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:50 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<segment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+<indexSegment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

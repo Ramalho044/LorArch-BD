@@ -1,0 +1,26 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FunctionOracle class="oracle.dbtools.crest.model.design.storage.oracle.FunctionOracle" name="FUN_ROW_TO_JSON" directorySegmentName="seg_0" id="71C35004-5C97-43DE-EDAB-B3C404D6C159">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>FUN_ROW_TO_JSON</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:08 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<owner><![CDATA[2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34]]></owner>
+<source>CREATE OR REPLACE FUNCTION RM558024.FUN_ROW_TO_JSON(
+  p_agencia  VARCHAR2,
+  p_conta    VARCHAR2,
+  p_valor    NUMBER
+) RETURN VARCHAR2 IS
+BEGIN
+  IF p_agencia IS NULL OR p_conta IS NULL OR p_valor IS NULL THEN
+    RAISE_APPLICATION_ERROR(-20011,&apos;FUN_ROW_TO_JSON: parâmetros nulos.&apos;);
+  END IF;
+
+  RETURN &apos;{&apos;||
+         &apos;&quot;agencia&quot;:&quot;&apos; || REPLACE(p_agencia,&apos;&quot;&apos;,&apos;\&quot;&apos;) || &apos;&quot;,&apos;||
+         &apos;&quot;conta&quot;:&quot;&apos;   || REPLACE(p_conta  ,&apos;&quot;&apos;,&apos;\&quot;&apos;) || &apos;&quot;,&apos;||
+         &apos;&quot;valor&quot;:&apos;    || TO_CHAR(p_valor,&apos;FM9999990D00&apos;) ||
+         &apos;}&apos;;
+END;</source>
+</FunctionOracle>

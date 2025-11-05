@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StorageDesignOraclev12cR2 class="oracle.dbtools.crest.model.design.storage.oracle.v12cr2.StorageDesignOraclev12cR2" name="Oracle Database 12cR2" id="BC66281C-491F-D49C-694B-2FDB0209F61B" siteID="79C73AAF-E1A7-E669-7DF0-025EE81A2AFC" siteName="Oracle Database 12cR2" siteType="14">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:46:25 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</StorageDesignOraclev12cR2>

@@ -1,0 +1,159 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7791A21C-F439-FD94-DEB6-C417F76A443D" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="FATO_MOVIMENTO">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>FATO_MOVIMENTO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:34 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_MOV" id="310D424B-F3A9-053C-27FF-7282C1B7C006">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>FATO_MOVIMENTO</sourceObjSchema>
+<sourceObjName>ID_MOV</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="ID_AGENCIA" id="0D17E568-F6A3-7622-485F-8AE3AACD6FEC">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>FATO_MOVIMENTO</sourceObjSchema>
+<sourceObjName>ID_AGENCIA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="19BAFD3F-42BF-1167-718E-F5BF52385749" referredColumn="28DD523C-A768-26E2-5F5D-543C282C0C85"/>
+</associations>
+</Column>
+<Column name="ID_CONTA" id="49A705D3-D91E-0D2E-966C-8D274A12B611">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>FATO_MOVIMENTO</sourceObjSchema>
+<sourceObjName>ID_CONTA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8EB16E17-D640-0AA0-5B63-FF61BE70DEAB" referredColumn="5B24D4FA-6B1F-C2D2-8128-9E8B9CA0523C"/>
+</associations>
+</Column>
+<Column name="VALOR" id="1FF6AE37-063C-B01E-D6CB-E552E1EB9C28">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>FATO_MOVIMENTO</sourceObjSchema>
+<sourceObjName>VALOR</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<constraintName>CK_VALOR_POS</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>12</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="valor IS NOT NULL AND valor &gt;= 0"/>
+<implementationDef dbType="Oracle Database 12cR2" definition="valor IS NOT NULL AND valor &gt;= 0"/>
+</checkConstraint>
+<ownDataTypeParameters>,12,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DT_MOV" id="25F5BEC5-E9CB-70B7-41F7-F87EE1477AD8">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>FATO_MOVIMENTO</sourceObjSchema>
+<sourceObjName>DT_MOV</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>SYSDATE</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5F0CC8FD-9616-BBB4-8032-6BA414E0B321" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="FATO_MOVIMENTO_PK">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>SYS_C006090989</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:36 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="310D424B-F3A9-053C-27FF-7282C1B7C006"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9E6E6B88-1861-5116-5CCC-9AB1B82FCCAE" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="IX_FATO_AGENCIA">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>IX_FATO_AGENCIA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:36 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0D17E568-F6A3-7622-485F-8AE3AACD6FEC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6EBA0F75-DB07-0556-BACD-4C396FF1F6FD" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="IX_FATO_CONTA">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>IX_FATO_CONTA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:36 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49A705D3-D91E-0D2E-966C-8D274A12B611"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FB044213-D904-F145-BFD7-16F337C58383" name="FK_FATO_AGENCIA">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:05 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0D17E568-F6A3-7622-485F-8AE3AACD6FEC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F478BFCB-94E7-0CF7-7B4F-6976ED3A2A8C" name="FK_FATO_CONTA">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:05 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49A705D3-D91E-0D2E-966C-8D274A12B611"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="19BAFD3F-42BF-1167-718E-F5BF52385749" containerWithKeyObject="7791A21C-F439-FD94-DEB6-C417F76A443D" localFKIndex="FB044213-D904-F145-BFD7-16F337C58383" name="FK_FATO_AGENCIA">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>FK_FATO_AGENCIA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:05 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<referredTableLongName>RM558024.AGENCIA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>99AD348C-352C-AA95-59F3-628E208446EF</referredTableID>
+<keyObject>6568881B-F658-8993-4652-04D3599CCED6</keyObject>
+<referredKeyID>6568881B-F658-8993-4652-04D3599CCED6</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_AGENCIA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

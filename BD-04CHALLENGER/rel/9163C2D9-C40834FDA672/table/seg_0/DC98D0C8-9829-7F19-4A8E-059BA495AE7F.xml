@@ -1,0 +1,122 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DC98D0C8-9829-7F19-4A8E-059BA495AE7F" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="AUDITORIA_MOV">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>AUDITORIA_MOV</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:34 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_AUD" id="7D19B11E-C358-F181-3A03-387BF81BF37E">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>AUDITORIA_MOV</sourceObjSchema>
+<sourceObjName>ID_AUD</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="TABELA" id="C173B82C-A4CB-E9F8-93A1-771EA515376F">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>AUDITORIA_MOV</sourceObjSchema>
+<sourceObjName>TABELA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="OPERACAO" id="39C2E81D-83CC-C9E8-0A68-EFA0087344BD">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>AUDITORIA_MOV</sourceObjSchema>
+<sourceObjName>OPERACAO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_REGISTRO" id="F4E78D1C-8AA0-4D07-F150-74683F818E42">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>AUDITORIA_MOV</sourceObjSchema>
+<sourceObjName>ID_REGISTRO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATA_AUD" id="BD352628-B191-0DDC-34F8-70C1CDD558DE">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>AUDITORIA_MOV</sourceObjSchema>
+<sourceObjName>DATA_AUD</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USUARIO" id="D86752B4-686E-05B8-B510-9F70F2C13D5C">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>AUDITORIA_MOV</sourceObjSchema>
+<sourceObjName>USUARIO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5281063E-E15B-6C60-7E81-5645F8A3AAAC" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="AUDITORIA_MOV_PK">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>SYS_C006090993</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:36 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7D19B11E-C358-F181-3A03-387BF81BF37E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

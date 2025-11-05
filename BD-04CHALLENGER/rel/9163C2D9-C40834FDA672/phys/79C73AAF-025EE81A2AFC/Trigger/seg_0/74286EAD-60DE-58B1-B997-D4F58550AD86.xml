@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="TRG_CH_MOTO_STATUS_AUD" directorySegmentName="seg_0" id="74286EAD-60DE-58B1-B997-D4F58550AD86">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>TRG_CH_MOTO_STATUS_AUD</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:03 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[BEGIN
+  PKG_CH.prc_registrar_auditoria(
+    p_tabela      => 'CH_MOTOCICLETA',
+    p_operacao    => 'UPDATE',
+    p_id_registro => :NEW.ID_MOTO,
+    p_detalhe     => 'TRG: STATUS '||:OLD.STATUS||'->'||:NEW.STATUS
+  );
+END;
+]]></body>
+<triggerTime>AFTER</triggerTime>
+<columns>92068580-53FF-97A0-F9E4-73CB02DF64B9</columns>
+<owner>2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34</owner>
+<table>A91EA7DA-26AD-D8B9-51C1-69329F604B45</table>
+</TriggerOraclev10g>

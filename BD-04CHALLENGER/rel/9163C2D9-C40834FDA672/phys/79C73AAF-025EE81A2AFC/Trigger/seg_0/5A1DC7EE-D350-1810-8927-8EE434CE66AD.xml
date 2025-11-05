@@ -1,0 +1,32 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="TRG_CH_MOV_AUD_UPDDEL" directorySegmentName="seg_0" id="5A1DC7EE-D350-1810-8927-8EE434CE66AD">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>TRG_CH_MOV_AUD_UPDDEL</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:03 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<actions>UPDATE, DELETE</actions>
+<body><![CDATA[DECLARE
+  v_op  VARCHAR2(10);
+  v_id  NUMBER;
+  v_det VARCHAR2(4000);
+BEGIN
+  IF UPDATING THEN
+    v_op := 'UPDATE';
+    v_id := :NEW.ID_MOV;
+    v_det := 'TRG: id='||:NEW.ID_MOV||' custo: '||
+             NVL(TO_CHAR(:OLD.CUSTO,'FM9999990D00'),'0')||'->'||NVL(TO_CHAR(:NEW.CUSTO,'FM9999990D00'),'0');
+  ELSIF DELETING THEN
+    v_op := 'DELETE';
+    v_id := :OLD.ID_MOV;
+    v_det := 'TRG: id='||:OLD.ID_MOV||' (removido)';
+  END IF;
+
+  PKG_CH.prc_registrar_auditoria('CH_MOVIMENTACAO', v_op, v_id, v_det);
+END;
+]]></body>
+<triggerTime>AFTER</triggerTime>
+<owner>2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34</owner>
+<table>323F05D1-88F2-225D-05D9-A51AEAC7861F</table>
+</TriggerOraclev10g>

@@ -1,0 +1,151 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A91EA7DA-26AD-D8B9-51C1-69329F604B45" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="CH_MOTOCICLETA">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>CH_MOTOCICLETA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:34 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_MOTO" id="3317FDDB-E7AA-B248-AE47-1578ED73BD31">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_MOTOCICLETA</sourceObjSchema>
+<sourceObjName>ID_MOTO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="PLACA" id="6EDB72B8-1930-1B60-3507-D806E32A42F9">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_MOTOCICLETA</sourceObjSchema>
+<sourceObjName>PLACA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8 BYTE</dataTypeSize>
+<ownDataTypeParameters>8 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MODELO" id="C5678047-6FA5-AAE1-81DB-45D53306DFA4">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_MOTOCICLETA</sourceObjSchema>
+<sourceObjName>MODELO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60 BYTE</dataTypeSize>
+<ownDataTypeParameters>60 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATUS" id="92068580-53FF-97A0-F9E4-73CB02DF64B9">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_MOTOCICLETA</sourceObjSchema>
+<sourceObjName>STATUS</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<constraintName>CK_CH_MOTO_STATUS</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15 BYTE</dataTypeSize>
+<listOfValues>
+<valueDef value="&apos;ATIVA&apos;" description=""/>
+<valueDef value="&apos;INATIVA&apos;" description=""/>
+<valueDef value="&apos;MANUTENCAO&apos;" description=""/>
+</listOfValues>
+<defaultValue>&apos;ATIVA&apos;</defaultValue>
+<ownDataTypeParameters>15 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DT_CADASTRO" id="F380E232-3C4A-B8EF-A287-3878108B2BFF">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>CH_MOTOCICLETA</sourceObjSchema>
+<sourceObjName>DT_CADASTRO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>SYSDATE</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="02B555CD-554B-7104-9B52-2F8D0E70370C" name="PK_CH_MOTO">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>PK_CH_MOTO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:50 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3317FDDB-E7AA-B248-AE47-1578ED73BD31"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0B558524-007D-C9A6-5180-9AA7B01B9682" name="UQ_CH_MOTO_PLACA">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>UQ_CH_MOTO_PLACA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:50 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6EDB72B8-1930-1B60-3507-D806E32A42F9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E04A7401-311E-232A-B68C-7F8CEDD63E5E" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="PK_CH_MOTO">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>PK_CH_MOTO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:36 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3317FDDB-E7AA-B248-AE47-1578ED73BD31"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FA3309A4-4A39-EAAB-E63E-438B5B991D2A" schemaObject="0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12" name="UQ_CH_MOTO_PLACA">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>UQ_CH_MOTO_PLACA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:36 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6EDB72B8-1930-1B60-3507-D806E32A42F9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

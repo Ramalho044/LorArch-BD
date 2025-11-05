@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FunctionOracle class="oracle.dbtools.crest.model.design.storage.oracle.FunctionOracle" name="FUN_VALIDA_VALOR" directorySegmentName="seg_0" id="E7FCCE47-3BD4-0F61-F9F4-7428D97FFBE7">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>FUN_VALIDA_VALOR</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:08 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<owner><![CDATA[2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34]]></owner>
+<source>CREATE OR REPLACE FUNCTION RM558024.FUN_VALIDA_VALOR(p_valor NUMBER)
+RETURN NUMBER IS
+BEGIN
+  IF p_valor IS NULL OR p_valor &lt; 0 THEN
+    RAISE_APPLICATION_ERROR(-20001,&apos;FUN_VALIDA_VALOR: valor nulo ou negativo.&apos;);
+  END IF;
+  RETURN 1;
+END;</source>
+</FunctionOracle>

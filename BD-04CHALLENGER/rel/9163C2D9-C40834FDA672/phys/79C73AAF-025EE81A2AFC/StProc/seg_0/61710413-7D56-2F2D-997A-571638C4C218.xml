@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="PRC_CH_ATUALIZA_STATUS_MOTO" directorySegmentName="seg_0" id="61710413-7D56-2F2D-997A-571638C4C218">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>PRC_CH_ATUALIZA_STATUS_MOTO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:08 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<owner><![CDATA[2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34]]></owner>
+<source>CREATE OR REPLACE PROCEDURE RM558024.PRC_CH_ATUALIZA_STATUS_MOTO(
+  p_id_moto     IN NUMBER,
+  p_novo_status IN VARCHAR2
+) AS
+BEGIN
+  PKG_CH.prc_atualiza_status_moto(p_id_moto, p_novo_status);
+END;</source>
+</StoredProcedureOraclev10g>

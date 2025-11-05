@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="PRC_REL_SOMAS" directorySegmentName="seg_0" id="2E3D2541-96E6-2614-89BB-5370B35940D4">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>PRC_REL_SOMAS</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:08 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<owner><![CDATA[2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34]]></owner>
+<source>CREATE OR REPLACE PROCEDURE RM558024.PRC_REL_SOMAS IS
+BEGIN
+  DBMS_OUTPUT.PUT_LINE(&apos;AGENCIA | CONTA | VALOR&apos;);
+  FOR r IN (
+    SELECT a.nome_agencia agencia, c.numero_conta conta, f.valor
+      FROM FATO_MOVIMENTO f
+      JOIN AGENCIA a ON a.id_agencia = f.id_agencia
+      JOIN CONTA   c ON c.id_conta   = f.id_conta
+     ORDER BY a.nome_agencia, c.numero_conta
+  ) LOOP
+    DBMS_OUTPUT.PUT_LINE(r.agencia||&apos; | &apos;||r.conta||&apos; | &apos;||TO_CHAR(r.valor,&apos;FM9999990D00&apos;));
+  END LOOP;
+END;</source>
+</StoredProcedureOraclev10g>

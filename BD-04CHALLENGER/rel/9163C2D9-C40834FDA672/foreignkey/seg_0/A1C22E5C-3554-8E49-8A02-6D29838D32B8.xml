@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A1C22E5C-3554-8E49-8A02-6D29838D32B8" containerWithKeyObject="323F05D1-88F2-225D-05D9-A51AEAC7861F" localFKIndex="112E20E5-CCC1-BB20-4D2B-1BBF7AA539A8" name="FK_CH_MOV_MOTO">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>FK_CH_MOV_MOTO</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:05 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<referredTableLongName>RM558024.CH_MOTOCICLETA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A91EA7DA-26AD-D8B9-51C1-69329F604B45</referredTableID>
+<keyObject>02B555CD-554B-7104-9B52-2F8D0E70370C</keyObject>
+<referredKeyID>02B555CD-554B-7104-9B52-2F8D0E70370C</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_MOTO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

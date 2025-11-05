@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="CONTA" directorySegmentName="seg_0" id="C3609711-625F-A51C-0255-122BF08F0686">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:34 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>2DF5022B-16BC-1A3B-7990-E44264EB87B6</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID_CONTA" id="5B24D4FA-6B1F-C2D2-8128-9E8B9CA0523C">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="NUMERO_CONTA" id="948949C7-CBDB-855B-E6B9-55F92EBE2505">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="CONTA_PK" id="F1BCF173-EDF9-B9C2-32F0-96A48E384432">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:50 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<segment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+<indexSegment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="326FE196-19E7-DBF0-AB16-82E5A1AC2267" containerWithKeyObject="323F05D1-88F2-225D-05D9-A51AEAC7861F" localFKIndex="A97EAD68-C99A-5B49-944E-734004A389E1" name="FK_CH_MOV_SETOR">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>FK_CH_MOV_SETOR</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:05 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<referredTableLongName>RM558024.CH_SETOR</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1EC543F7-27C4-5DBC-E83A-2CF55BBB3AF5</referredTableID>
+<keyObject>4839462D-CA46-79CB-8B12-922005A32865</keyObject>
+<referredKeyID>4839462D-CA46-79CB-8B12-922005A32865</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_SETOR</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

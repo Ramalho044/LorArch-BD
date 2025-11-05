@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="PKG_CH_JSON" directorySegmentName="seg_0" id="1DC8C4E5-AD54-D04A-4699-CE9EEC9C0FC1">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>PKG_CH_JSON</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:08 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<owner><![CDATA[2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34]]></owner>
+<source>CREATE OR REPLACE PACKAGE RM558024.PKG_CH_JSON AS
+  PROCEDURE prc_gerar_json_mov_det;
+END PKG_CH_JSON;</source>
+<body class="oracle.dbtools.crest.model.design.storage.oracle.PackageBodyOracle" name="PKG_CH_JSON" id="1DC8C4E5-AD54-D04A-4699-CE9EEC9C0FC1">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>PKG_CH_JSON</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:08 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<owner><![CDATA[2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34]]></owner>
+<source>CREATE OR REPLACE PACKAGE BODY RM558024.PKG_CH_JSON AS
+  FUNCTION fmt_num(p_n NUMBER) RETURN VARCHAR2 IS
+  BEGIN
+    RETURN TO_CHAR(p_n,&apos;FM9999990D00&apos;,&apos;NLS_NUMERIC_CHARACTERS=.,&apos;);
+  END;
+  PROCEDURE prc_gerar_json_mov_det IS
+    v_ord   NUMBER := 0;
+    v_first BOOLEAN := TRUE;
+
+    PROCEDURE out_line(p VARCHAR2) IS
+    BEGIN
+      v_ord := v_ord + 1;
+      INSERT INTO CH_JSON_OUT(ORD, LINHA) VALUES (v_ord, p);
+    END;
+  BEGIN
+    DELETE FROM CH_JSON_OUT;
+
+    out_line(&apos;[&apos;);
+
+    FOR r IN (
+      SELECT m.id_moto,
+             s.nome_setor AS setor,
+             m.tipo_mov   AS tipo,
+             TO_CHAR(m.dt_mov,&apos;YYYY-MM-DD&quot;T&quot;HH24:MI:SS&apos;) AS dt_mov,
+             NVL(m.observacao,&apos;&apos;) AS obs,
+             m.custo
+        FROM CH_MOVIMENTACAO m
+        JOIN CH_SETOR s ON s.id_setor = m.id_setor
+       ORDER BY m.id_moto, m.dt_mov
+    ) LOOP
+      IF v_first THEN
+        v_first := FALSE;
+      ELSE
+        out_line(&apos;,&apos;);
+      END IF;
+
+      out_line(
+        &apos;{&apos;||&apos;&quot;id_moto&quot;:&apos;||r.id_moto||&apos;,&apos;||
+        &apos;&quot;setor&quot;:&quot;&apos;||REPLACE(r.setor,&apos;&quot;&apos;,&apos;&quot;&quot;&apos;)||&apos;&quot;,&apos;||
+        &apos;&quot;tipo&quot;:&quot;&apos;||REPLACE(r.tipo,&apos;&quot;&apos;,&apos;&quot;&quot;&apos;)||&apos;&quot;,&apos;||
+        &apos;&quot;dt_mov&quot;:&quot;&apos;||r.dt_mov||&apos;&quot;,&apos;||
+        &apos;&quot;obs&quot;:&quot;&apos;||REPLACE(r.obs,&apos;&quot;&apos;,&apos;&quot;&quot;&apos;)||&apos;&quot;,&apos;||
+        &apos;&quot;custo&quot;:&apos;||fmt_num(r.custo)||
+        &apos;}&apos;
+      );
+    END LOOP;
+
+    out_line(&apos;]&apos;);
+
+    DBMS_OUTPUT.PUT_LINE(&apos;JSON gerado em CH_JSON_OUT.&apos;);
+    COMMIT;
+  END;
+END PKG_CH_JSON;</source>
+</body>
+</PackageOracle>

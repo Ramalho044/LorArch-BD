@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="CH_JSON_OUT" directorySegmentName="seg_0" id="2A9E1B9F-AE58-0180-46C5-33565B72DD3B">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:34 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>2DF5022B-16BC-1A3B-7990-E44264EB87B6</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="LINHA" id="50C92143-D211-2312-D2A6-44E7FCB6BF10">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ORD" id="AE4E620E-CDEE-FFF5-53F6-65E8118ED7E0">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+</TableProxyOraclev12c>

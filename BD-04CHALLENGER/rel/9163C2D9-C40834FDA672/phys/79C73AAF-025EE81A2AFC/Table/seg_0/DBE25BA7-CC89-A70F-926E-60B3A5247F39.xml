@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="CH_AUDITORIA" directorySegmentName="seg_0" id="DBE25BA7-CC89-A70F-926E-60B3A5247F39">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:34 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>2DF5022B-16BC-1A3B-7990-E44264EB87B6</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="USUARIO_BD" id="059095C1-B770-0F34-A199-F0D056C7C91D">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<defaultValue>USER</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="ID_AUDITORIA" id="162504E6-EA88-5473-E6B6-428C5424FC2B">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="ID_REGISTRO" id="17FC5A4A-AD1C-35ED-56AE-F56191A22637">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DETALHE" id="191CB9DC-3B8A-82CC-1D26-EB366F21B1C6">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DATA_AUD" id="3A747951-CE38-C8CA-20BD-8DD19E37B54B">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<defaultValue>SYSDATE</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="TABELA" id="7CF0FB46-AF94-5E66-15FE-3FCB7D10FA06">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="OPERACAO" id="D5D2C385-5C62-F202-97C1-2D56BE2EC561">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_CH_AUD" id="8D888D2A-83FA-21E0-854C-3A6AD5E56C3B">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:36 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<segment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_CH_AUD" id="635446BB-8089-F4BD-0561-0012A045779C">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:50 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<segment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+<existingIndex>8D888D2A-83FA-21E0-854C-3A6AD5E56C3B</existingIndex>
+<indexSegment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

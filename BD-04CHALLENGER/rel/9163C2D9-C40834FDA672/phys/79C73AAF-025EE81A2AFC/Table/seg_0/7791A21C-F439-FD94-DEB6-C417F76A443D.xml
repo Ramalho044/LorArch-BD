@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="FATO_MOVIMENTO" directorySegmentName="seg_0" id="7791A21C-F439-FD94-DEB6-C417F76A443D">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:34 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>2DF5022B-16BC-1A3B-7990-E44264EB87B6</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID_AGENCIA" id="0D17E568-F6A3-7622-485F-8AE3AACD6FEC">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="VALOR" id="1FF6AE37-063C-B01E-D6CB-E552E1EB9C28">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DT_MOV" id="25F5BEC5-E9CB-70B7-41F7-F87EE1477AD8">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<defaultValue>SYSDATE</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="ID_MOV" id="310D424B-F3A9-053C-27FF-7282C1B7C006">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="ID_CONTA" id="49A705D3-D91E-0D2E-966C-8D274A12B611">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:35 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="IX_FATO_CONTA" id="6EBA0F75-DB07-0556-BACD-4C396FF1F6FD">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:36 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<segment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="IX_FATO_AGENCIA" id="9E6E6B88-1861-5116-5CCC-9AB1B82FCCAE">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:36 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<segment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_FATO_CONTA" id="F478BFCB-94E7-0CF7-7B4F-6976ED3A2A8C">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:05 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_FATO_AGENCIA" id="FB044213-D904-F145-BFD7-16F337C58383">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:05 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="FATO_MOVIMENTO_PK" id="5F0CC8FD-9616-BBB4-8032-6BA414E0B321">
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:49:50 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<schemaObject>0A09565A-F9F4-ACCB-36EC-FC9E71BFEE12</schemaObject>
+<segment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</segment>
+<tableSpace>9FDC1AAE-7C86-80E7-F322-B22C131800CE</tableSpace>
+<indexSegment>D7CAEEB3-C397-F0A1-19A8-6B6AB95A8470</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

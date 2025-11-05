@@ -1,0 +1,242 @@
+MONGO - POWERSHEL
+
+0) Pré-requisitos e pasta de trabalho
+
+# 0.1) verifique se o serviço MongoDB está ativo
+Get-Service MongoDB | Select-Object Status,Name
+
+# 0.2) versões do cliente
+& "$env:LOCALAPPDATA\Programs\mongosh\mongosh.exe" --version
+
+# 0.3) localizar mongoimport.exe (Database Tools)
+$mongoimportExe = (Get-ChildItem -Path "C:\Program Files","C:\Program Files (x86)","$env:LOCALAPPDATA","$env:LOCALAPPDATA\Programs" -Recurse -Filter mongoimport.exe -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
+$mongoimportExe
+
+# 0.4) pasta de trabalho
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Documents\Mongo" | Out-Null
+Set-Location "$env:USERPROFILE\Documents\Mongo"
+
+_____________________________________________________________________
+
+
+1) Converter o JSON do Oracle
+
+# 1.1) ler o arquivo do Oracle e transformar em objeto
+$orig = Get-Content .\ch_movimentos.json -Raw | ConvertFrom-Json
+
+# 1.2) extrair apenas a coluna "linha" e filtrar os objetos JSON
+$linhas  = $orig.results[0].items | ForEach-Object { $_.linha }
+$objetos = $linhas | Where-Object { $_ -match '^\s*\{.*\}\s*$' }
+
+if (-not $objetos -or $objetos.Count -eq 0) { throw "Não encontrei objetos JSON nas linhas." }
+
+# 1.3) montar o array JSON válido e salvar em UTF-8 
+$conteudoFinal = "[`r`n" + ($objetos -join ",`r`n") + "`r`n]"
+Set-Content .\ch_movimentos_corrigido.json $conteudoFinal -Encoding utf8
+
+# 1.4) sanity check
+$null = Get-Content .\ch_movimentos_corrigido.json -Raw | ConvertFrom-Json
+"OK: ch_movimentos_corrigido.json reconstruído e válido." | Write-Host
+
+___________________________________________________________________
+
+2) Importar para o Mongo
+
+# 2.1) importar como JSON array
+& $mongoimportExe --db lorarch --collection staging --drop --file ".\ch_movimentos_corrigido.json" --jsonArray
+
+# 2.2) conferir 
+& "$env:LOCALAPPDATA\Programs\mongosh\mongosh.exe" "mongodb://localhost:27017/lorarch" --eval "db.staging.countDocuments()"
+
+___________________________________________________________________
+
+3) Criar coleção final motos (validator + carga via aggregation)
+
+$js = @'
+use("lorarch");
+
+// Limpa a coleção de destino (idempotente)
+db.motos.drop();
+
+// Cria com schema validator
+db.createCollection("motos", {
+  validator: { $jsonSchema: {
+    bsonType: "object",
+    required: ["id_moto_sql","movimentacoes","total_custos"],
+    properties: {
+      id_moto_sql: { bsonType: "int" },
+      placa: { bsonType: ["string","null"] },
+      modelo:{ bsonType: ["string","null"] },
+      status:{ bsonType: ["string","null"] },
+      movimentacoes: {
+        bsonType: "array",
+        items: {
+          bsonType: "object",
+          required: ["setor","tipo","dt_mov","obs","custo"],
+          properties: {
+            setor:{ bsonType:"string" },
+            tipo: { bsonType:"string", enum:["ENTRADA","TRANSF","SAIDA"] },
+            dt_mov:{ bsonType:"string" }, // mantemos string ISO vinda do Oracle
+            obs:  { bsonType:"string" },
+            custo:{ bsonType:["double","int","decimal"] }
+          }
+        }
+      },
+      total_custos: { bsonType:["double","int","decimal"] }
+    }
+  }}
+});
+
+// Monta os documentos finais a partir de 'staging'
+db.motos.insertMany(
+  db.staging.aggregate([
+    { $group: {
+        _id: "$id_moto",
+        movimentacoes: { $push: {
+          setor: "$setor",
+          tipo: "$tipo",
+          dt_mov: "$dt_mov",
+          obs: { $ifNull: ["$obs",""] },
+          custo: { $toDouble: "$custo" }
+        }},
+        total_custos: { $sum: { $toDouble: "$custo" } }
+    }},
+    { $project: {
+        _id: 0,
+        id_moto_sql: { $toInt: "$_id" },
+        placa: null, modelo: null, status: null,
+        movimentacoes: 1, total_custos: 1
+    }}
+  ]).toArray()
+);
+
+// Índices úteis
+db.motos.createIndex({ id_moto_sql: 1 }, { unique: true });
+db.motos.createIndex({ "movimentacoes.setor": 1 });
+db.motos.createIndex({ total_custos: -1 });
+
+// Prints rápidos
+print("Docs em staging:", db.staging.countDocuments());
+print("Docs em motos:",   db.motos.countDocuments());
+// Exemplo
+print("Exemplo:",         EJSON.stringify(db.motos.findOne(), null, 2));
+'@
+
+Set-Content -Path ".\mongo-setup.js" -Value $js -Encoding UTF8
+
+
+# 3.2)  setup
+& "$env:LOCALAPPDATA\Programs\mongosh\mongosh.exe" "mongodb://localhost:27017/lorarch" --file ".\mongo-setup.js"
+
+___________________________________________________________________
+
+
+4) Corrigir acentuação
+
+Set-Content -Path ".\fix-acentos.js" -Encoding UTF8 -Value @'
+use("lorarch");
+
+// Atualiza o array movimentacoes, consertando "obs"
+db.motos.updateMany(
+  {},
+  [
+    {
+      $set: {
+        movimentacoes: {
+          $map: {
+            input: "$movimentacoes",
+            as: "m",
+            in: {
+              $mergeObjects: [
+                "$$m",
+                {
+                  obs: {
+                    $replaceAll: {
+                      input: {
+                        $replaceAll: {
+                          input: "$$m.obs",
+                          find: "padrÃ£o",
+                          replacement: "padrão"
+                        }
+                      },
+                      find: "TransferÃªncia",
+                      replacement: "Transferência"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
+);
+'@
+
+
+4.2) Rodar o fix
+
+& "$env:LOCALAPPDATA\Programs\mongosh\mongosh.exe" "mongodb://localhost:27017/lorarch" --file ".\fix-acentos.js"
+
+
+4.3) Verificações rápidas
+
+# contagens
+& "$env:LOCALAPPDATA\Programs\mongosh\mongosh.exe" lorarch --eval "db.staging.countDocuments(); db.motos.countDocuments();"
+
+# exemplo de observações corrigidas, moto 6 e moto 1
+& "$env:LOCALAPPDATA\Programs\mongosh\mongosh.exe" lorarch --eval "printjson(db.motos.findOne({id_moto_sql:6},{_id:0,'movimentacoes.obs':1}))"
+& "$env:LOCALAPPDATA\Programs\mongosh\mongosh.exe" lorarch --eval "printjson(db.motos.findOne({id_moto_sql:1},{_id:0,'movimentacoes.obs':1}))"
+
+___________________________________________________________________
+
+
+5) Consultas de validação
+
+$queries = @'
+use("lorarch");
+
+print("TOP 5 por total_custos:");
+printjson(
+  db.motos.find({}, {id_moto_sql:1,total_custos:1,_id:0})
+          .sort({total_custos:-1})
+          .limit(5)
+          .toArray()
+);
+
+print("\nUm exemplo com setor = 'Entrega':");
+printjson(
+  db.motos.find(
+    { "movimentacoes.setor": "Entrega" },
+    { id_moto_sql:1, "movimentacoes.$":1, _id:0 }
+  ).limit(5).toArray()
+);
+
+print("\nFiltro por período 2025-10-01 .. 2025-10-10:");
+printjson(
+  db.motos.aggregate([
+    { $unwind: "$movimentacoes" },
+    { $addFields: { movData: { $dateFromString: { dateString: "$movimentacoes.dt_mov" } } } },
+    { $match: { movData: { $gte: ISODate("2025-10-01T00:00:00Z"), $lte: ISODate("2025-10-10T23:59:59Z") } } },
+    { $project: { _id:0, id_moto_sql:1, setor:"$movimentacoes.setor", tipo:"$movimentacoes.tipo", dt:"$movimentacoes.dt_mov", custo:"$movimentacoes.custo" } },
+    { $limit: 10 }
+  ]).toArray()
+);
+'@
+Set-Content -Path ".\mongo-queries.js" -Value $queries -Encoding UTF8
+
+
+
+5.2) Executar
+
+& "$env:LOCALAPPDATA\Programs\mongosh\mongosh.exe" "mongodb://localhost:27017/lorarch" --file ".\mongo-queries.js"
+
+
+___________________________________________________________________
+
+6) (Depois) Atalho: executar tudo com um script
+
+# dentro de C:\Users\Marcos Ramalho\Documents\Mongo
+.\run-sprint4.ps1
+

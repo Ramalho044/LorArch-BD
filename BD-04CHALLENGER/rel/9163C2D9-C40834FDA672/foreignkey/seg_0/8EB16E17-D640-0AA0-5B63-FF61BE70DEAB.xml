@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="8EB16E17-D640-0AA0-5B63-FF61BE70DEAB" containerWithKeyObject="7791A21C-F439-FD94-DEB6-C417F76A443D" localFKIndex="F478BFCB-94E7-0CF7-7B4F-6976ED3A2A8C" name="FK_FATO_CONTA">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>FK_FATO_CONTA</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:05 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<referredTableLongName>RM558024.CONTA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C3609711-625F-A51C-0255-122BF08F0686</referredTableID>
+<keyObject>F1BCF173-EDF9-B9C2-32F0-96A48E384432</keyObject>
+<referredKeyID>F1BCF173-EDF9-B9C2-32F0-96A48E384432</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_CONTA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,167 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="PKG_CH" directorySegmentName="seg_0" id="67474B9B-2E9F-E459-BA50-FC4785B92363">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>PKG_CH</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:08 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<owner><![CDATA[2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34]]></owner>
+<source>CREATE OR REPLACE PACKAGE RM558024.PKG_CH AS
+  c_err_tipo_invalido    CONSTANT PLS_INTEGER := -20061;
+  c_err_status_invalido  CONSTANT PLS_INTEGER := -20091;
+  c_err_fk_inexistente   CONSTANT PLS_INTEGER := -20041;
+
+  FUNCTION fun_valida_tipo(p_tipo VARCHAR2) RETURN NUMBER;
+  FUNCTION fun_valida_status(p_status VARCHAR2) RETURN NUMBER;
+  FUNCTION fun_soma_custo_moto(p_id_moto NUMBER) RETURN NUMBER;
+
+  PROCEDURE prc_registrar_auditoria(
+    p_tabela      IN VARCHAR2,
+    p_operacao    IN VARCHAR2,
+    p_id_registro IN NUMBER,
+    p_detalhe     IN VARCHAR2
+  );
+
+  PROCEDURE prc_registrar_mov(
+    p_id_moto   IN NUMBER,
+    p_id_setor  IN NUMBER,
+    p_tipo_mov  IN VARCHAR2,
+    p_custo     IN NUMBER   DEFAULT 0,
+    p_obs       IN VARCHAR2 DEFAULT NULL
+  );
+
+  PROCEDURE prc_atualiza_status_moto(
+    p_id_moto     IN NUMBER,
+    p_novo_status IN VARCHAR2
+  );
+
+  PROCEDURE prc_rel_somas;
+END PKG_CH;</source>
+<body class="oracle.dbtools.crest.model.design.storage.oracle.PackageBodyOracle" name="PKG_CH" id="67474B9B-2E9F-E459-BA50-FC4785B92363">
+<sourceConnName>SPRINT-04</sourceConnName>
+<sourceObjSchema>RM558024</sourceObjSchema>
+<sourceObjName>PKG_CH</sourceObjName>
+<createdBy>Marcos Ramalho</createdBy>
+<createdTime>2025-10-30 18:50:08 UTC</createdTime>
+<ownerDesignName>BD-04CHALLENGER </ownerDesignName>
+<owner><![CDATA[2A1BB62E-531B-4CB9-0D0E-FF96EE52CB34]]></owner>
+<source>CREATE OR REPLACE PACKAGE BODY RM558024.PKG_CH AS
+  FUNCTION fun_valida_tipo(p_tipo VARCHAR2) RETURN NUMBER IS
+  BEGIN
+    IF UPPER(p_tipo) IN (&apos;ENTRADA&apos;,&apos;SAIDA&apos;,&apos;TRANSF&apos;) THEN RETURN 1; ELSE RETURN 0; END IF;
+  END;
+
+  FUNCTION fun_valida_status(p_status VARCHAR2) RETURN NUMBER IS
+  BEGIN
+    IF UPPER(p_status) IN (&apos;ATIVA&apos;,&apos;MANUTENCAO&apos;,&apos;INATIVA&apos;) THEN RETURN 1; ELSE RETURN 0; END IF;
+  END;
+
+  FUNCTION fun_soma_custo_moto(p_id_moto NUMBER) RETURN NUMBER IS
+    v_total NUMBER := 0;
+  BEGIN
+    SELECT NVL(SUM(custo),0) INTO v_total FROM CH_MOVIMENTACAO WHERE id_moto = p_id_moto;
+    RETURN v_total;
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+      RETURN 0;
+  END;
+
+  PROCEDURE prc_registrar_auditoria(
+    p_tabela      IN VARCHAR2,
+    p_operacao    IN VARCHAR2,
+    p_id_registro IN NUMBER,
+    p_detalhe     IN VARCHAR2
+  ) IS
+  BEGIN
+    INSERT INTO CH_AUDITORIA (tabela, operacao, id_registro, detalhe)
+    VALUES (UPPER(p_tabela), UPPER(p_operacao), p_id_registro, p_detalhe);
+  END;
+
+  PROCEDURE prc_registrar_mov(
+    p_id_moto   IN NUMBER,
+    p_id_setor  IN NUMBER,
+    p_tipo_mov  IN VARCHAR2,
+    p_custo     IN NUMBER   DEFAULT 0,
+    p_obs       IN VARCHAR2 DEFAULT NULL
+  ) IS
+    v_ok    NUMBER;
+    v_existe NUMBER;
+    v_id_mov NUMBER;
+  BEGIN
+    -- valida FK moto
+    SELECT COUNT(*) INTO v_existe FROM CH_MOTOCICLETA WHERE id_moto = p_id_moto;
+    IF v_existe = 0 THEN
+      RAISE_APPLICATION_ERROR(c_err_fk_inexistente,&apos;Moto inexistente: &apos;||p_id_moto);
+    END IF;
+
+    -- valida FK setor
+    SELECT COUNT(*) INTO v_existe FROM CH_SETOR WHERE id_setor = p_id_setor;
+    IF v_existe = 0 THEN
+      RAISE_APPLICATION_ERROR(c_err_fk_inexistente,&apos;Setor inexistente: &apos;||p_id_setor);
+    END IF;
+
+    -- valida tipo
+    v_ok := fun_valida_tipo(p_tipo_mov);
+    IF v_ok = 0 THEN
+      RAISE_APPLICATION_ERROR(c_err_tipo_invalido,&apos;Tipo inválido: &apos;||p_tipo_mov);
+    END IF;
+
+    IF p_custo &lt; 0 THEN
+      RAISE_APPLICATION_ERROR(-20011,&apos;Custo não pode ser negativo&apos;);
+    END IF;
+
+    INSERT INTO CH_MOVIMENTACAO (id_moto, id_setor, tipo_mov, dt_mov, custo, observacao)
+    VALUES (p_id_moto, p_id_setor, UPPER(p_tipo_mov), SYSDATE, p_custo, p_obs)
+    RETURNING id_mov INTO v_id_mov;
+
+    prc_registrar_auditoria(&apos;CH_MOVIMENTACAO&apos;,&apos;INSERT&apos;,v_id_mov,
+      &apos;moto=&apos;||p_id_moto||&apos;, setor=&apos;||p_id_setor||&apos;, tipo=&apos;||UPPER(p_tipo_mov)||&apos;, custo=&apos;||TO_CHAR(p_custo,&apos;FM9999990D00&apos;));
+  END;
+
+  PROCEDURE prc_atualiza_status_moto(
+    p_id_moto     IN NUMBER,
+    p_novo_status IN VARCHAR2
+  ) IS
+    v_ok NUMBER;
+  BEGIN
+    v_ok := fun_valida_status(p_novo_status);
+    IF v_ok = 0 THEN
+      RAISE_APPLICATION_ERROR(c_err_status_invalido,&apos;Status inválido: &apos;||p_novo_status);
+    END IF;
+
+    UPDATE CH_MOTOCICLETA
+       SET status = UPPER(p_novo_status)
+     WHERE id_moto = p_id_moto;
+
+    IF SQL%ROWCOUNT = 0 THEN
+      RAISE_APPLICATION_ERROR(c_err_fk_inexistente,&apos;Moto inexistente: &apos;||p_id_moto);
+    END IF;
+
+    prc_registrar_auditoria(&apos;CH_MOTOCICLETA&apos;,&apos;UPDATE&apos;,p_id_moto,&apos;STATUS=&apos;||UPPER(p_novo_status));
+  END;
+
+  PROCEDURE prc_rel_somas IS
+    v_total_mov   NUMBER;
+    v_total_custo NUMBER;
+  BEGIN
+    SELECT COUNT(*), NVL(SUM(custo),0)
+      INTO v_total_mov, v_total_custo
+      FROM CH_MOVIMENTACAO;
+
+    DBMS_OUTPUT.PUT_LINE(&apos;Total de movimentacoes: &apos;||v_total_mov);
+    DBMS_OUTPUT.PUT_LINE(&apos;Soma de custos: &apos;||TO_CHAR(v_total_custo,&apos;FM9999990D00&apos;));
+
+    DBMS_OUTPUT.PUT_LINE(&apos;Top 5 motos por custo:&apos;);
+    FOR r IN (
+      SELECT m.id_moto, fun_soma_custo_moto(m.id_moto) soma
+        FROM CH_MOTOCICLETA m
+       ORDER BY soma DESC
+       FETCH FIRST 5 ROWS ONLY
+    ) LOOP
+      DBMS_OUTPUT.PUT_LINE(&apos; - Moto &apos;||r.id_moto||&apos;: &apos;||TO_CHAR(r.soma,&apos;FM9999990D00&apos;));
+    END LOOP;
+  END;
+END PKG_CH;</source>
+</body>
+</PackageOracle>
